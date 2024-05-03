@@ -2,7 +2,32 @@
 #include <conio.h>
 #include <time.h>
 #include <stdlib.h>
-#include<widows.h>
+#include<windows.h>
+void drawGame(int sx, int sy, int tx, int ty) {
+    system("cls");
+    for (int y = 10; y >= -10; y--) {
+        for (int x = -10; x <= 10; x++) {
+            if (x == sx && y == sy) {
+                printf("*");
+            } else if (x == tx && y == ty) {
+                printf("$");
+
+            }
+
+            else {
+                 printf(" ");
+            }
+        }
+        printf("\n");
+    }
+}
+void gotoxy(int x,int y)
+{
+    static HANDLE h = NULL;
+    if((!h)) h=GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD c={x+2,y+3};
+    SetConsoleCursorPosition(h,c);
+}
 void Play_LEvel(int sx,int sy,int tlx,int tly)
 {
     char ch;
@@ -28,7 +53,15 @@ void Play_LEvel(int sx,int sy,int tlx,int tly)
             sx = sx + 1;
             break;
         }
-        printf("%d %d\n",sx,sy);
+         drawGame(sx, sy, tlx, tly);
+        if (sx == tlx && sy == tly) {
+            printf("\nGAME OVER\n");
+            sx = tlx;
+            sy = tly;
+            break;
+        }
+        //gotoxy(4,4);
+        printf("%d%d\n",sx,sy);
         if (sx == tlx && sy == tly)
         {
             printf("\nGAME OVER\n");
@@ -57,8 +90,11 @@ int main()
 
         tx = rand() % 20 - 10;
         ty = rand() % 20 - 10;
-        printf("\n target is %d %d \n", tx, ty);
-        printf("-----------GO-------\n");
+        printf("\n-----------------------\n");
+        printf("  Level %d\n", level + 1);
+        printf("-----------------------\n");
+        printf("Find the target ($) to win!\n\n");
+
         start = clock();
         Play_LEvel(sx,sy,tx,ty);
         end = clock();
@@ -76,3 +112,6 @@ int main()
     getch();
     return 0;
 }
+
+
+
