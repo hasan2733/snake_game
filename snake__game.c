@@ -2,7 +2,7 @@
 #include <conio.h>
 #include <time.h>
 #include <stdlib.h>
-
+#include<widows.h>
 void Play_LEvel(int sx,int sy,int tlx,int tly)
 {
     char ch;
