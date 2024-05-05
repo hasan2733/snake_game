@@ -144,6 +144,7 @@ int main() {
         }
     }
     printf("\n Time taken: %.3f seconds and Level=%d\n", cpu_time_used, level);
+    printf("SCORE = %.2f",score);
     getch();
     getch();
     return 0;
