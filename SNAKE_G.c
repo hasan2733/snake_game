@@ -93,7 +93,7 @@ void Play_LEvel(int sx, int sy, int tlx, int tly)
         }
         drawGame(sx, sy, tlx, tly, prevX, prevY, prevCount);
         if (sx == tlx && sy == tly) {
-            printf("\nGAME OVER\n");
+            printf("\n REACHED TARGET \n");
             break;
         }
         printf("%d%d\n", sx, sy);
