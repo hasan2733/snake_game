@@ -106,7 +106,7 @@ void Play_LEvel(int sx, int sy, int tlx, int tly)
 int main() {
     char ch;
     clock_t start, end;
-    double cpu_time_used = 0.0;
+    double cpu_time_used = 0.0,score=0.0;
     int level = 0;
 
     int sx = 0, sy = 0;
@@ -128,6 +128,15 @@ int main() {
         end = clock();
         level++;
         cpu_time_used += ((double)(end - start)) / CLOCKS_PER_SEC;
+        //score
+        if(cpu_time_used>50.0)
+        {
+            score=0.0;
+        }
+        else
+        {
+           score+=cpu_time_used*level;
+        }
         printf("if you want to continue ? press y for continue and n for discontinue:\n");
         ch = getche();
         if (ch == 'n' || ch == 'N') {
